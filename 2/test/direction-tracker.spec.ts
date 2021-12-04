@@ -1,7 +1,9 @@
 import {
   multiplyHorizontalByVertical,
+  multiplyHorizontalByVerticalWithAim,
   sumHorizontalDirection,
   sumVerticalDirection,
+  sumVerticalDirectionWithAim,
 } from "../src/direction-tracker";
 import { Vector } from "../src/input-parser";
 
@@ -34,6 +36,20 @@ describe("direction-tracker", () => {
   describe("multiplyHorizontalByVertical", () => {
     it("example input/output", () => {
       expect(multiplyHorizontalByVertical(exampleVectors)).toStrictEqual(150);
+    });
+  });
+
+  describe("sumVerticalDirectionWithAim", () => {
+    it("example input/output", () => {
+      expect(sumVerticalDirectionWithAim(exampleVectors)).toStrictEqual(60);
+    });
+  });
+
+  describe("multiplyHorizontalByVerticalWithAim", () => {
+    it("example input/output", () => {
+      expect(multiplyHorizontalByVerticalWithAim(exampleVectors)).toStrictEqual(
+        900
+      );
     });
   });
 });
