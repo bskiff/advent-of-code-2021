@@ -1,0 +1,25 @@
+{
+  "name": "advent-of-code-2021",
+  "version": "1.0.0",
+  "description": "solutions to advent of code 2021",
+  "repository": "https://github.com/bskiff/advent-of-code-2021.git",
+  "author": "Ben Skiff <benskiff@msn.com>",
+  "license": "MIT",
+  "scripts": {
+    "1": "ts-node ./1/src/index.ts",
+    "build": "tsc",
+    "test": "jest"
+  },
+  "devDependencies": {
+    "@types/chance": "^1.1.3",
+    "@types/jest": "^27.0.3",
+    "@types/node": "^16.11.11",
+    "chance": "^1.1.8",
+    "jest": "^27.4.3",
+    "ts-jest": "^27.0.7",
+    "typescript": "^4.5.2"
+  },
+  "dependencies": {
+    "ts-node": "^10.4.0"
+  }
+}
