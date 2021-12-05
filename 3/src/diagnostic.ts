@@ -62,7 +62,10 @@ export const convertBinaryToDecimal = (input: Bit[]): number => {
   );
 };
 
-export const computeOxygenGeneratorRating = (input: Bit[][]): Bit[] => {
+const computeFilteredRating = (
+  input: Bit[][],
+  ratingFunc: (input: Bit[][]) => Bit[]
+): Bit[] => {
   return input.reduce(
     (
       filteredNumbers: Bit[][],
@@ -73,35 +76,22 @@ export const computeOxygenGeneratorRating = (input: Bit[][]): Bit[] => {
         return filteredNumbers;
       }
 
-      const gamma = computeGammaRate(
+      const rating = ratingFunc(
         filteredNumbers.map((num: Bit[]): Bit[] => [num[index]])
       )[0];
 
-      return filteredNumbers.filter((num: Bit[]) => num[index] === gamma);
+      return filteredNumbers.filter((num: Bit[]) => num[index] === rating);
     },
     [...input]
   )[0];
 };
 
+export const computeOxygenGeneratorRating = (input: Bit[][]): Bit[] => {
+  return computeFilteredRating(input, computeGammaRate);
+};
+
 export const computeCo2ScrubberRating = (input: Bit[][]): Bit[] => {
-  return input.reduce(
-    (
-      filteredNumbers: Bit[][],
-      _currentNumber: Bit[],
-      index: number
-    ): Bit[][] => {
-      if (filteredNumbers.length == 1) {
-        return filteredNumbers;
-      }
-
-      const epsilon = computeEpsilonRate(
-        filteredNumbers.map((num: Bit[]): Bit[] => [num[index]])
-      )[0];
-
-      return filteredNumbers.filter((num: Bit[]) => num[index] === epsilon);
-    },
-    [...input]
-  )[0];
+  return computeFilteredRating(input, computeEpsilonRate);
 };
 
 export const computeLifeSupportRating = (input: Bit[][]): number => {
