@@ -8,6 +8,7 @@
   "scripts": {
     "1": "ts-node ./1/src/index.ts",
     "2": "ts-node ./2/src/index.ts",
+    "3": "ts-node ./3/src/index.ts",
     "build": "tsc",
     "test": "jest"
   },
